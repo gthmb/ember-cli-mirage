@@ -21,8 +21,10 @@ module.exports = {
     this.addonBuildConfig = this.app.options['ember-cli-mirage'] || {};
     if (this.addonBuildConfig['directory']) {
       this.mirageDirectory = this.addonBuildConfig['directory'];
+    } else if (this.addonConfig['directory']) {
+      this.mirageDirectory = this.addonConfig['directory'];
     } else if (app.project.pkg['ember-addon'] && !app.project.pkg['ember-addon'].paths) {
-      this.mirageDirectory = path.resolve(app.project.root, path.join('tests', 'dummy', 'mirage'))
+      this.mirageDirectory = path.resolve(app.project.root, path.join('tests', 'dummy', 'mirage'));
     } else {
       this.mirageDirectory = path.join(this.app.project.root, '/mirage');
     }
